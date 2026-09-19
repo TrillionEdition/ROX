@@ -16,8 +16,8 @@ import {
   FaYoutube,
   FaInstagram,
   FaFacebook,
-  FaTwitter
 } from "react-icons/fa";
+import { FaXTwitter } from 'react-icons/fa6';
 import heroImage from "../assets/hero.png";
 import roadImage from "../assets/road_show.png";
 import tharImage from "../assets/thar.png";
@@ -57,9 +57,11 @@ const MACHINES = [
 
 function Logo({ className = "" }) {
   return (
-    <span className={`font-extrabold tracking-tight ${className}`}>
-      ROX<span className="text-red-600">4X4</span>
-    </span>
+    <img
+      src="https://pub-dbc24446d37a40aeb1dfdd10992cd2d9.r2.dev/socialbureau-media/ROX%204X4.png"
+      alt="ROX 4X4 Logo"
+      className={`h-14 sm:h-20 w-auto ${className}`}
+    />
   );
 }
 
@@ -143,8 +145,8 @@ useEffect(() => {
   return (
     <div className="min-h-screen bg-black text-neutral-100 antialiased">
       {/* ---------- Nav ---------- */}
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-black/90 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#003b18] backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5">
           <Logo className="text-xl" />
 
           <nav className="hidden items-center gap-7 text-sm font-medium text-neutral-300 lg:flex">
@@ -169,7 +171,7 @@ useEffect(() => {
             <a href="#" className="text-sm font-medium text-neutral-300 hover:text-white">Login</a>
             <a
               href="#"
-              className="rounded-sm bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-500"
+              className="rounded-sm bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-[#003b18] hover:text-white"
             >
               Join Now
             </a>
@@ -190,7 +192,7 @@ useEffect(() => {
               {NAV_LINKS.map((link) => (
                 <a key={link} href="#" className="hover:text-white">{link}</a>
               ))}
-              <a href="#" className="mt-2 rounded-sm bg-red-600 px-4 py-2 text-center text-sm font-semibold text-white">
+              <a href="#" className="mt-2 rounded-sm bg-white px-4 py-2 text-center text-sm font-semibold text-black">
                 Join Now
               </a>
             </nav>
@@ -200,16 +202,16 @@ useEffect(() => {
 
       {/* ---------- Hero ---------- */}
       <section
-  className="relative overflow-hidden border-b border-white/10 bg-cover bg-center bg-no-repeat"
+  className="relative overflow-hidden border-b border-white/10 bg-cover bg-center bg-no-repeat pt-60 md:pt-0"
   style={{ backgroundImage: `url(${heroImage})` }}
 >
   <div className="absolute inset-0 bg-black/40" />
-  <div className="relative mx-auto max-w-7xl px-5 py-20 sm:py-28">
+  <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-5 sm:py-28">
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-red-500">
             Extreme trails, real machines, live events
           </p>
-          <h1 className="max-w-2xl text-6xl font-black leading-[0.95] tracking-tight sm:text-7xl">
-            ROX<span className="text-red-600">4X4</span>
+          <h1 className="max-w-2xl text-5xl font-black text-gray-400 leading-[0.95] tracking-tight sm:text-7xl">
+            ROX<span className="text-white">4X4</span>
           </h1>
           <p className="mt-3 text-2xl font-bold tracking-tight text-neutral-200 sm:text-3xl">
             Live the off-road.
@@ -218,10 +220,10 @@ useEffect(() => {
             Watch exclusive offroad shows, livestreams, behind-the-scenes and more — only on ROX4X4.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <a
               href="#"
-              className="inline-flex items-center gap-2 rounded-sm bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-500"
+              className="inline-flex items-center gap-2 rounded-sm bg-[#003b18] px-6 py-3 text-sm font-semibold text-white hover:bg-red-500"
             >
               <Play className="h-4 w-4 fill-white" /> Watch Live
             </a>
@@ -236,7 +238,7 @@ useEffect(() => {
 
         {/* Stat strip */}
         <div className="relative border-t border-white/10 bg-black/70">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-white/10 px-5 sm:grid-cols-4">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-white/10 px-4 sm:grid-cols-2 sm:divide-y-0 sm:divide-x lg:grid-cols-4">
             {[
               { label: "Live Now", value: "ROX Offroad Show #02", sub: "Coorg, Karnataka", cta: "Watch Live" },
               { label: "Next Event", value: "ROX Offroad Show #03", sub: "28 Sep 2026 · 7:00 PM", cta: "View Details" },
@@ -262,7 +264,7 @@ useEffect(() => {
       </section>
 
       {/* ---------- Upcoming Events ---------- */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
+      <section className="mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="mb-8 flex items-end justify-between">
           <div>
             <h2 className="text-3xl font-black tracking-tight">Upcoming Events</h2>
@@ -282,7 +284,7 @@ useEffect(() => {
                   <Badge tone="outline">Upcoming</Badge>
                 </div>
               </div>
-              <div className="p-5">
+              <div className="relative h-44">
                 <h3 className="font-bold text-white">{ev.title}</h3>
                 <div className="mt-2 flex items-center gap-1.5 text-xs text-neutral-500">
                   <MapPin className="h-3.5 w-3.5" /> {ev.location}
@@ -295,7 +297,7 @@ useEffect(() => {
                   <span className="rounded-sm bg-white/5 px-2 py-1">Livestream</span>
                   {ev.membersOnly && <span className="rounded-sm bg-red-600/10 px-2 py-1 text-red-500">Members Only</span>}
                 </div>
-                <button className="mt-4 w-full border border-white/15 py-2.5 text-xs font-semibold text-white transition-colors group-hover:border-red-600 group-hover:bg-red-600">
+                <button className="mt-4 w-full border border-white/15 py-2.5 text-xs font-semibold text-white transition-colors group-hover:bg-[#003b18]">
                   View Details
                 </button>
               </div>
@@ -308,7 +310,7 @@ useEffect(() => {
       <section className="relative overflow-hidden border-y border-white/10">
         <TerrainSwatch seed={2} className="absolute inset-0" />
         <div className="absolute inset-0 bg-black/60" />
-        <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-5 py-14 sm:flex-row sm:items-end">
+        <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 py-12 sm:px-5 sm:py-14 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <Badge tone="live">Next Show</Badge>
             <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">ROX Offroad Show</h2>
@@ -317,15 +319,18 @@ useEffect(() => {
             </p>
           </div>
 
-          <div className="flex items-end gap-6">
-            <div className="flex gap-4">
+          <div className="flex w-full flex-col gap-6 sm:flex-row sm:items-end sm:gap-6 lg:w-auto">
+            <div className="grid grid-cols-4 gap-2 sm:flex sm:gap-4">
   {[
     { v: timeLeft.days, l: "Days" },
     { v: timeLeft.hours, l: "Hours" },
     { v: timeLeft.minutes, l: "Min" },
     { v: timeLeft.seconds, l: "Sec" },
   ].map((t) => (
-    <div key={t.l} className="text-center min-w-[50px]">
+    <div
+  key={t.l}
+  className="min-w-0 rounded-sm border border-white/10 bg-black/30 px-2 py-3 text-center sm:min-w-[50px] sm:border-0 sm:bg-transparent sm:px-0 sm:py-0"
+>
       <div className="text-3xl font-black tabular-nums text-white">
         {String(t.v).padStart(2, "0")}
       </div>
@@ -336,7 +341,7 @@ useEffect(() => {
     </div>
   ))}
 </div>
-            <a href="#" className="rounded-sm bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-500">
+            <a href="#" className="rounded-sm bg-[#003b18] px-6 py-3 text-sm font-semibold text-white hover:bg-black text-center">
               Get Access
             </a>
           </div>
@@ -344,7 +349,7 @@ useEffect(() => {
       </section>
 
       {/* ---------- Latest Content ---------- */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
+      <section className="mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="text-3xl font-black tracking-tight">Latest Content</h2>
@@ -359,7 +364,7 @@ useEffect(() => {
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`whitespace-nowrap rounded-sm px-4 py-1.5 text-xs font-semibold transition-colors ${
-                activeTab === tab ? "bg-red-600 text-white" : "bg-white/5 text-neutral-400 hover:bg-white/10"
+                activeTab === tab ? "bg-[#003b18] text-white" : "bg-white/5 text-neutral-400 hover:bg-white/10"
               }`}
             >
               {tab}
@@ -371,7 +376,11 @@ useEffect(() => {
           {LATEST_CONTENT.map((c, i) => (
             <article key={c.id} className="group cursor-pointer">
               <div className="relative h-48 overflow-hidden">
-                <img src={roadImage} alt={c.title} />
+                <img
+  src={roadImage}
+  alt={c.title}
+  className="h-full w-full object-cover"
+/>
               </div>
               <h3 className="mt-3 text-sm font-bold text-white">{c.title}</h3>
               <p className="mt-1 text-xs text-neutral-500">{c.meta}</p>
@@ -381,7 +390,7 @@ useEffect(() => {
       </section>
 
       {/* ---------- ROX Machines ---------- */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
+      <section className="mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="mb-6 flex items-end justify-between">
           <div>
             <h2 className="text-3xl font-black tracking-tight">ROX Machines</h2>
@@ -392,10 +401,14 @@ useEffect(() => {
           </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {MACHINES.map((m, i) => (
             <article key={m.id} className="border border-white/10 bg-neutral-950">
-              <img src={m.image} alt={m.name} /><div className="p-4">
+              <img
+  src={m.image}
+  alt={m.name}
+  className="h-52 w-full object-cover sm:h-44"
+/><div className="p-4">
                 <div className="text-[10px] font-semibold uppercase tracking-widest text-red-500">{m.id}</div>
                 <h3 className="mt-1 text-sm font-bold text-white">{m.name}</h3>
                 <button className="mt-3 w-full border border-white/15 py-2 text-[11px] font-semibold text-neutral-300 hover:border-red-600 hover:text-white">
@@ -411,7 +424,7 @@ useEffect(() => {
       <section className="relative overflow-hidden border-y border-white/10">
         <TerrainSwatch seed={3} className="absolute inset-0" />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/40" />
-        <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 px-5 py-16 sm:flex-row sm:items-center">
+        <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 px-5 py-12 sm:py-16 sm:flex-row sm:items-center">
           <div className="max-w-md">
             <h2 className="text-3xl font-black leading-tight tracking-tight sm:text-4xl">
               Enter the ROX Inner Circle
@@ -419,7 +432,7 @@ useEffect(() => {
             <p className="mt-2 text-sm text-neutral-400">
               Get closer to the machines, drivers and action.
             </p>
-            <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-neutral-300">
+            <ul className="mt-6 grid grid-cols-1 gap-y-3 text-sm text-neutral-300 sm:grid-cols-2 sm:gap-x-6">
               {["Live ROX offroad shows", "Driver interviews", "Exclusive videos", "Early event announcements",
                 "Full event replays", "Members-only livestreams", "Behind-the-scenes content", "Exclusive ROX community"].map((f) => (
                 <li key={f} className="flex items-start gap-2">
@@ -436,7 +449,7 @@ useEffect(() => {
             </div>
             <a
               href="#"
-              className="mt-5 block w-full rounded-sm bg-red-600 py-3 text-center text-sm font-semibold text-white hover:bg-red-500"
+              className="mt-5 block w-full rounded-sm bg-[#003b18] py-3 text-center text-sm font-semibold text-white hover:bg-black"
             >
               Join Now
             </a>
@@ -446,32 +459,86 @@ useEffect(() => {
       </section>
 
       {/* ---------- Footer ---------- */}
-      <footer className="mx-auto max-w-7xl px-5 py-12">
-        <div className="flex flex-col justify-between gap-8 sm:flex-row">
-          <div>
-            <Logo className="text-lg" />
-            <p className="mt-2 text-xs text-neutral-500">Live. Explore. Subscribe.</p>
-            <div className="mt-4 flex gap-3 text-neutral-500">
-              <FaYoutube className="h-4 w-4 hover:text-white" />
-              <FaInstagram className="h-4 w-4 hover:text-white" />
-              <FaFacebook className="h-4 w-4 hover:text-white" />
-              <FaTwitter className="h-4 w-4 hover:text-white" />
-              <Music2 className="h-4 w-4 hover:text-white" />
-            </div>
-          </div>
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-500">
-            {NAV_LINKS.map((l) => <a key={l} href="#" className="hover:text-white">{l}</a>)}
-          </nav>
+      <footer className="bg-[#003b18] px-4 py-10 sm:px-8 sm:py-12 lg:px-20">
+  <div className="mx-auto max-w-7xl">
+
+    {/* Top Footer */}
+    <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+
+      {/* Brand */}
+      <div className="text-center sm:text-left">
+        <Logo className="text-lg" />
+
+        <p className="mt-3 text-xs text-white/80">
+          Live. Explore. Subscribe.
+        </p>
+
+        <div className="mt-4 flex items-center justify-center gap-4 text-white/80 sm:justify-start">
+          <FaYoutube className="h-4 w-4 hover:text-white" />
+          <FaInstagram className="h-4 w-4 hover:text-white" />
+          <FaFacebook className="h-4 w-4 hover:text-white" />
+          <FaXTwitter className="h-4 w-4 hover:text-white" />
         </div>
-        <div className="mt-10 flex flex-col justify-between gap-2 border-t border-white/10 pt-6 text-[11px] text-neutral-600 sm:flex-row">
-          <span>© 2026 ROX4X4. All rights reserved.</span>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-neutral-400">Privacy Policy</a>
-            <a href="#" className="hover:text-neutral-400">Terms &amp; Conditions</a>
-            <a href="#" className="hover:text-neutral-400">Contact</a>
-          </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs text-white/80 sm:max-w-md sm:justify-end">
+        {NAV_LINKS.map((l) => (
+          <a
+            key={l}
+            href="#"
+            className="whitespace-nowrap hover:text-white"
+          >
+            {l}
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    {/* Bottom */}
+    <div className="mt-10 border-t border-white/10 pt-6">
+
+      <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-between">
+
+        {/* Copyright */}
+        <span className="text-center text-[11px] text-white/80 sm:text-left">
+          © 2026 ROX4X4. All rights reserved.
+        </span>
+
+        {/* TrillionEdition */}
+        <a
+          href="https://trillionedition.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex"
+        >
+          <img
+            src="https://trillionedition.com/assets/trillon-logo-w%202-CbMT1MVd.png"
+            alt="TrillionEdition"
+            className="h-9 w-auto"
+          />
+        </a>
+
+        {/* Legal */}
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] text-white/80 sm:justify-end">
+          <a href="#" className="hover:text-white">
+            Privacy Policy
+          </a>
+
+          <a href="#" className="hover:text-white">
+            Terms &amp; Conditions
+          </a>
+
+          <a href="#" className="hover:text-white">
+            Contact
+          </a>
         </div>
-      </footer>
+
+      </div>
+    </div>
+
+  </div>
+</footer>
     </div>
   );
 }
