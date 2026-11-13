@@ -6,18 +6,10 @@ import {
   Users,
   Clock,
   MapPin,
-  Music2,
-  Menu,
-  X,
-  Search
+  Music2
 } from "lucide-react";
 
-import {
-  FaYoutube,
-  FaInstagram,
-  FaFacebook,
-} from "react-icons/fa";
-import { FaXTwitter } from 'react-icons/fa6';
+import { Header, Footer } from "../components/SiteLayout";
 import heroImage from "../assets/hero.png";
 import roadImage from "../assets/road_show.png";
 import tharImage from "../assets/thar.png";
@@ -31,8 +23,6 @@ import toyotaRangerImage from "../assets/ford.png";
  * a single alarm-red accent, and condensed bold type for the
  * "extreme trails" energy the brand is built on.
  */
-
-const NAV_LINKS = ["Home", "Events", "Live", "Shows", "Media", "Vehicles", "Membership"];
 
 const UPCOMING_EVENTS = [
   { id: 1, title: "ROX Offroad Show #03", location: "Wayanad, Kerala", date: "28 Sep 2026 · 7:00 PM IST", membersOnly: true },
@@ -54,16 +44,6 @@ const MACHINES = [
   { id: "ROX #003", name: "Toyota Hilux", image: hiluxImage },
   { id: "ROX #004", name: "Ford Ranger", image: toyotaRangerImage },
 ];
-
-function Logo({ className = "" }) {
-  return (
-    <img
-      src="https://pub-dbc24446d37a40aeb1dfdd10992cd2d9.r2.dev/socialbureau-media/ROX%204X4.png"
-      alt="ROX 4X4 Logo"
-      className={`h-14 sm:h-20 w-auto ${className}`}
-    />
-  );
-}
 
 function Badge({ children, tone = "live" }) {
   const tones = {
@@ -95,7 +75,6 @@ function TerrainSwatch({ seed = 0, className = "" }) {
 }
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("All");
     const [timeLeft, setTimeLeft] = useState({
   days: 0,
@@ -144,61 +123,7 @@ useEffect(() => {
 }, []);
   return (
     <div className="min-h-screen bg-black text-neutral-100 antialiased">
-      {/* ---------- Nav ---------- */}
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#003b18] backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5">
-          <Logo className="text-xl" />
-
-          <nav className="hidden items-center gap-7 text-sm font-medium text-neutral-300 lg:flex">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className={`relative pb-1 transition-colors hover:text-white ${
-                  link === "Live" ? "flex items-center gap-1.5 text-white" : ""
-                }`}
-              >
-                {link === "Live" && <span className="h-1.5 w-1.5 rounded-full bg-red-600" />}
-                {link}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden items-center gap-3 lg:flex">
-            <button aria-label="Search" className="rounded-sm p-2 text-neutral-400 hover:text-white">
-              <Search className="h-4 w-4" />
-            </button>
-            <a href="#" className="text-sm font-medium text-neutral-300 hover:text-white">Login</a>
-            <a
-              href="#"
-              className="rounded-sm bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-[#003b18] hover:text-white"
-            >
-              Join Now
-            </a>
-          </div>
-
-          <button
-            className="p-2 text-neutral-300 lg:hidden"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {menuOpen && (
-          <div className="border-t border-white/10 px-5 py-4 lg:hidden">
-            <nav className="flex flex-col gap-4 text-sm font-medium text-neutral-300">
-              {NAV_LINKS.map((link) => (
-                <a key={link} href="#" className="hover:text-white">{link}</a>
-              ))}
-              <a href="#" className="mt-2 rounded-sm bg-white px-4 py-2 text-center text-sm font-semibold text-black">
-                Join Now
-              </a>
-            </nav>
-          </div>
-        )}
-      </header>
+      <Header />
 
       {/* ---------- Hero ---------- */}
       <section
@@ -458,87 +383,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ---------- Footer ---------- */}
-      <footer className="bg-[#003b18] px-4 py-10 sm:px-8 sm:py-12 lg:px-20">
-  <div className="mx-auto max-w-7xl">
-
-    {/* Top Footer */}
-    <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
-
-      {/* Brand */}
-      <div className="text-center sm:text-left">
-        <Logo className="text-lg" />
-
-        <p className="mt-3 text-xs text-white/80">
-          Live. Explore. Subscribe.
-        </p>
-
-        <div className="mt-4 flex items-center justify-center gap-4 text-white/80 sm:justify-start">
-          <FaYoutube className="h-4 w-4 hover:text-white" />
-          <FaInstagram className="h-4 w-4 hover:text-white" />
-          <FaFacebook className="h-4 w-4 hover:text-white" />
-          <FaXTwitter className="h-4 w-4 hover:text-white" />
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs text-white/80 sm:max-w-md sm:justify-end">
-        {NAV_LINKS.map((l) => (
-          <a
-            key={l}
-            href="#"
-            className="whitespace-nowrap hover:text-white"
-          >
-            {l}
-          </a>
-        ))}
-      </nav>
-    </div>
-
-    {/* Bottom */}
-    <div className="mt-10 border-t border-white/10 pt-6">
-
-      <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-between">
-
-        {/* Copyright */}
-        <span className="text-center text-[11px] text-white/80 sm:text-left">
-          © 2026 ROX4X4. All rights reserved.
-        </span>
-
-        {/* TrillionEdition */}
-        <a
-          href="https://trillionedition.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex"
-        >
-          <img
-            src="https://trillionedition.com/assets/trillon-logo-w%202-CbMT1MVd.png"
-            alt="TrillionEdition"
-            className="h-9 w-auto"
-          />
-        </a>
-
-        {/* Legal */}
-        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] text-white/80 sm:justify-end">
-          <a href="#" className="hover:text-white">
-            Privacy Policy
-          </a>
-
-          <a href="#" className="hover:text-white">
-            Terms &amp; Conditions
-          </a>
-
-          <a href="#" className="hover:text-white">
-            Contact
-          </a>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</footer>
+      <Footer />
     </div>
   );
 }
